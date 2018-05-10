@@ -16,6 +16,9 @@
     <feature name="Console">
         <param name="ios-package" value="CDVLogger" />
     </feature>
+    <feature name="ApperlPlugin">
+        <param name="ios-package" value="ApperlPlugin" />
+    </feature>
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
