@@ -7021,6 +7021,10 @@ function gutterEvent(cm, e, type, prevent) {
   var mX, mY
   try { mX = e.clientX; mY = e.clientY }
   catch(e) { return false }
+  if (typeof mX == 'undefined' || typeof mY == 'undefined') {
+  mX=e.pageX
+  mY=e.pageY
+  }
   if (mX >= Math.floor(cm.display.gutters.getBoundingClientRect().right)) { return false }
   if (prevent) { e_preventDefault(e) }
 
@@ -7373,6 +7377,7 @@ function registerEventHandlers(cm) {
     if (d.activeTouch) { d.activeTouch.moved = true }
   })
   on(d.scroller, "touchend", function (e) {
+  clickInGutter(cm, e);
     var touch = d.activeTouch
     if (touch && !eventInWidget(d, e) && touch.left != null &&
         !touch.moved && new Date - touch.start < 300) {
